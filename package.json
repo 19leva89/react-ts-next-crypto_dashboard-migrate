@@ -6,6 +6,11 @@
     "dev": "next dev --turbopack",
     "build": "next build --turbopack",
     "start": "next start",
+    "db:generate": "prisma generate",
+    "db:migrate": "prisma migrate dev --skip-generate",
+    "db:deploy": "prisma migrate deploy",
+    "db:push": "prisma db push",
+    "db:seed": "prisma db seed",
     "lint": "next lint",
     "types": "tsc --noEmit --project ./tsconfig.json",
     "knip": "knip",
@@ -13,7 +18,7 @@
     "test:watch": "vitest --watch",
     "test:ui": "vitest --ui",
     "test:coverage": "vitest --coverage",
-    "postinstall": "npx prisma generate && npm rebuild sharp",
+    "postinstall": "prisma generate && npm rebuild sharp",
     "all": "concurrently \"npm run dev\" \"npx prisma studio\""
   },
   "dependencies": {

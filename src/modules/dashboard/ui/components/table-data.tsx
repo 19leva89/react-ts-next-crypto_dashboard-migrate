@@ -125,7 +125,7 @@ export function DataTable<TData, TValue>({
 			const category = data[index]
 
 			return (
-				<DropdownMenuItem key={category.category_id} className='!w-[98.5%] rounded-xl' style={style}>
+				<DropdownMenuItem key={category.category_id} className='w-[98.5%]! rounded-xl' style={style}>
 					<button
 						onClick={() => onCategoryClick(category.category_id, category.name)}
 						className='w-full rounded-xl p-2 text-start'
@@ -190,7 +190,7 @@ export function DataTable<TData, TValue>({
 								disabled={!categories.length}
 								className='group h-10 w-2/4 justify-between rounded-xl px-4 py-2 transition-colors duration-300 ease-in-out md:w-fit'
 							>
-								<span className='truncate'>{currentCategory || 'Categories'}</span>
+								<span className='truncate'>{categories.length ? currentCategory : 'No categories'}</span>
 
 								<div className='relative size-5 transition-transform duration-300 group-hover:rotate-180'>
 									<ChevronDownIcon className='absolute inset-0 m-auto' />
@@ -198,35 +198,34 @@ export function DataTable<TData, TValue>({
 							</Button>
 						</DropdownMenuTrigger>
 
-						{categories.length ? (
-							<DropdownMenuContent
-								align='start'
-								className='mt-1 max-h-64 w-full overflow-y-hidden rounded-xl py-1 shadow-xl'
-							>
-								<DropdownMenuItem className='rounded-xl'>
-									<button
-										onClick={() => {
-											onCategoryClick('')
-										}}
-										className='w-full rounded-xl px-2 py-1 text-start'
-									>
-										All categories
-									</button>
-								</DropdownMenuItem>
-
-								<List
-									rowComponent={({ index, style }) => (
-										<RowComponent index={index} style={style} data={categories} />
-									)}
-									rowCount={categories.length}
-									rowHeight={40}
-									rowProps={{
-										'aria-posinset': 1,
-										'aria-setsize': categories.length,
-										role: 'listitem',
+						<DropdownMenuContent
+							align='start'
+							className='mt-1 max-h-64 w-full overflow-y-hidden rounded-xl py-1 shadow-xl'
+						>
+							<DropdownMenuItem className='rounded-xl'>
+								<button
+									onClick={() => {
+										onCategoryClick('')
 									}}
-									overscanCount={15}
-									className='h-50 w-62 cursor-pointer
+									className='w-full rounded-xl px-2 py-1 text-start'
+								>
+									All categories
+								</button>
+							</DropdownMenuItem>
+
+							<List
+								rowComponent={({ index, style }) => (
+									<RowComponent index={index} style={style} data={categories} />
+								)}
+								rowCount={categories.length}
+								rowHeight={40}
+								rowProps={{
+									'aria-posinset': 1,
+									'aria-setsize': categories.length,
+									role: 'listitem',
+								}}
+								overscanCount={15}
+								className='h-50 w-62 cursor-pointer
 										[&::-webkit-scrollbar]:h-1.5
 										[&::-webkit-scrollbar]:w-1.5
 										[&::-webkit-scrollbar-thumb]:rounded-full
@@ -238,11 +237,8 @@ export function DataTable<TData, TValue>({
 										[&::-webkit-scrollbar-track]:rounded-full
 										[&::-webkit-scrollbar-track]:bg-gray-100
 										dark:[&::-webkit-scrollbar-track]:bg-slate-800'
-								/>
-							</DropdownMenuContent>
-						) : (
-							<p className='px-4 py-2 text-sm text-gray-500'>No categories available</p>
-						)}
+							/>
+						</DropdownMenuContent>
 					</DropdownMenu>
 
 					{/* Visibility columns */}
