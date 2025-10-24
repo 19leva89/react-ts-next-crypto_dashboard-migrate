@@ -1,0 +1,14 @@
+{
+	"jsxSingleQuote": true,
+	"plugins": ["prettier-plugin-tailwindcss"],
+	"printWidth": 110,
+	"semi": false,
+	"singleQuote": true,
+	"tailwindFunctions": ["clsx", "cn", "cva", "twMerge", "tw"],
+	"tailwindPreserveDuplicates": true,
+	"tailwindPreserveWhitespace": true,
+	"tailwindStylesheet": "./src/app/globals.css",
+	"tabWidth": 2,
+	"trailingComma": "all",
+	"useTabs": true
+}
