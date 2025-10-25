@@ -6,6 +6,7 @@ import { obfuscatorOptions, pluginOptions } from './obfuscator-options'
 const withNextJsObfuscator = createNextJsObfuscator(obfuscatorOptions, pluginOptions)
 
 const nextConfig: NextConfig = withNextJsObfuscator({
+	turbopack: {},
 	images: {
 		remotePatterns: [
 			{
